@@ -1,6 +1,7 @@
 package com.devpablo.workshopmongo.services;
 
 import com.devpablo.workshopmongo.domain.User;
+import com.devpablo.workshopmongo.dto.UserDTO;
 import com.devpablo.workshopmongo.repository.UserRepository;
 import com.devpablo.workshopmongo.services.exception.ObjectNotFoundException;
 import java.util.List;
@@ -26,4 +27,11 @@ public class UserService {
         return user.get();
     }
 
+    public User insert(User obj) {
+        return repo.insert(obj);
+    }
+    
+    public User fromDTO(UserDTO objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+    }
 }
